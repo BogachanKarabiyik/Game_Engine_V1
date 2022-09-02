@@ -14,7 +14,7 @@ namespace lve {
 
 	public:
 		static constexpr int WIDTH = 800;
-		static constexpr int HEIGHT = 600;
+		static constexpr int HEIGHT = 800;
 
 		FirstApp();
 		~FirstApp();
@@ -27,7 +27,7 @@ namespace lve {
 	private:
 		void loadGameObjects();
 
-		LveWindow lveWindow{ WIDTH, HEIGHT, "Hello Vulkan!" };
+		LveWindow lveWindow{ WIDTH, HEIGHT, "funny_cube.exe" };
 		LveDevice lveDevice{ lveWindow };
 		LveRenderer lveRenderer{ lveWindow, lveDevice };
 
