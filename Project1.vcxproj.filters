@@ -36,6 +36,12 @@
     <ClCompile Include="lve_model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="lve_renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="simple_render_system.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lve_window.hpp">
@@ -59,6 +65,12 @@
     <ClInclude Include="lve_game_object.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="lve_renderer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="simple_render_system.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\simple_shader.vert" />
@@ -80,9 +92,7 @@
     <None Include="x64\Debug\Project1.tlog\CL.write.1.tlog" />
     <None Include="x64\Debug\Project1.tlog\CL.read.1.tlog" />
     <None Include="x64\Debug\Project1.tlog\CL.command.1.tlog" />
-    <None Include="gitignore.git">
-      <Filter>Source Files</Filter>
-    </None>
+    <None Include=".gitignore" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="x64\Debug\Project1.log" />
