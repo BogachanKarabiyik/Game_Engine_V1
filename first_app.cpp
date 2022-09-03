@@ -1,5 +1,7 @@
 #include "first_app.hpp"
 
+#include "keyboard_movement_controller.hpp"
+#include "lve_camera.hpp"
 #include "simple_render_system.hpp"
 
 // libs
@@ -11,6 +13,7 @@
 // std
 #include <stdexcept>
 #include <array>
+#include <chrono>
 
 namespace lve {
 
@@ -22,10 +25,31 @@ namespace lve {
 
 	void FirstApp::run() {
 		SimpleRenderSystem simpleRenderSystem{ lveDevice, lveRenderer.getSwapChainRenderPass() };
+        LveCamera camera{};
+        camera.setViewTarget(glm::vec3(-1.f, -2.f, 2.f), glm::vec3(0.f, 0.f, 2.5f));
+
+        auto viewerObject = LveGameObject::createGameObject();
+        KeyboardMovementController cameraController{};
+
+        auto currentTime = std::chrono::high_resolution_clock::now();
+        
+        float MAX_FRAME_TIME = 60.0;
 
 		while (!lveWindow.shouldClose()) {
 			glfwPollEvents();
-		
+
+            auto newTime = std::chrono::high_resolution_clock::now();
+            float frameTime = std::chrono::duration<float, std::chrono::seconds::period>(newTime - currentTime).count();
+            currentTime = newTime;
+
+            frameTime = glm::min(frameTime, MAX_FRAME_TIME);
+
+            cameraController.moveInPlaneXZ(lveWindow.getGLFWwindow(), frameTime, viewerObject);
+            camera.setViewYXZ(viewerObject.transform.translation, viewerObject.transform.rotation);
+
+            float aspect = lveRenderer.getAspectRatio();
+            camera.setPerspectiveProjection(glm::radians(50.f), aspect, 0.1f, 10.f);
+
 			if (auto commandBuffer = lveRenderer.beginFrame()) {
 
 				// begin offscreen shadow pass
@@ -33,7 +57,7 @@ namespace lve {
 				// end offscreen shadow pass
 
 				lveRenderer.beginSwapChainRenderPass(commandBuffer);
-				simpleRenderSystem.renderGameObjects(commandBuffer, gameObjects);
+				simpleRenderSystem.renderGameObjects(commandBuffer, gameObjects, camera);
 				lveRenderer.endSwapChainRenderPass(commandBuffer);
 				lveRenderer.endFrame();
 			}
@@ -107,7 +131,7 @@ namespace lve {
 
         auto cube = LveGameObject::createGameObject();
         cube.model = lveModel;
-        cube.transform.translation = { .0f, .0f, .5f };
+        cube.transform.translation = { .0f, .0f, 2.5f };
         cube.transform.scale = { .5f, .5f, .5f };
         gameObjects.push_back(std::move(cube));
 	}
