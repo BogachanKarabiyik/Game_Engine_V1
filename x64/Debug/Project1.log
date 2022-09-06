@@ -1,12 +1,11 @@
 ﻿  first_app.cpp
 D:\source\repos\Project1\Project1\keyboard_movement_controller.hpp(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 D:\source\repos\Project1\Project1\keyboard_movement_controller.hpp(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  keyboard_movement_controller.cpp
-D:\source\repos\Project1\Project1\keyboard_movement_controller.hpp(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-D:\source\repos\Project1\Project1\keyboard_movement_controller.hpp(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  lve_model.cpp
-  main.cpp
+D:\source\repos\Project1\Project1\first_app.cpp(7,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   lve_pipeline.cpp
+  point_light_system.cpp
   simple_render_system.cpp
   Generating Code...
+lve_swap_chain.obj : warning LNK4099: PDB 'vc143.pdb' was not found with 'lve_swap_chain.obj' or at 'D:\source\repos\Project1\x64\Debug\vc143.pdb'; linking object as if no debug info
+lve_device.obj : warning LNK4099: PDB 'vc143.pdb' was not found with 'lve_device.obj' or at 'D:\source\repos\Project1\x64\Debug\vc143.pdb'; linking object as if no debug info
   Project1.vcxproj -> D:\source\repos\Project1\x64\Debug\Project1.exe
